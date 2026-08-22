@@ -98,9 +98,15 @@ footer {
   grid-template-columns: 1fr auto;
 }
 
+.brand-lockup {
+  display: grid;
+  gap: 0.3rem;
+  justify-items: start;
+}
+
 .brand-logo {
   display: block;
-  width: 150px;
+  width: 205px;
   min-width: 96px;
   line-height: 0;
 }
@@ -109,6 +115,14 @@ footer {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.brand-caption {
+  color: var(--cobalt);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .hero {
@@ -196,6 +210,21 @@ h3 {
 .hero-lede {
   max-width: 720px;
   margin-bottom: 1.8rem;
+}
+
+.request-note {
+  max-width: 720px;
+  margin: -0.45rem 0 1.7rem;
+  padding: 0.75rem 0.9rem;
+  color: var(--ink);
+  background: var(--cobalt-soft);
+  border-left: 4px solid var(--cobalt);
+  border-radius: 0.55rem;
+  font-size: 0.87rem;
+}
+
+.request-note strong {
+  color: var(--cobalt);
 }
 
 .hero-actions {
@@ -702,6 +731,14 @@ footer p {
 
   .site-header {
     grid-template-columns: 1fr auto;
+  }
+
+  .brand-logo {
+    width: 174px;
+  }
+
+  .brand-caption {
+    font-size: 0.6rem;
   }
 
   .hero {
