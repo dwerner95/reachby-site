@@ -6,8 +6,10 @@ human-researched UK-to-Germany pilot.
 
 The site deliberately has:
 
-- no JavaScript;
-- no form, account, payment, analytics, cookie, or browser storage;
+- one small, dependency-free local script used only to prepare an email draft;
+- one locality-first journey form with no email, name, age or exact-address
+  field;
+- no account, payment, analytics, cookie, website-side storage or tracking;
 - no live journey, price, availability, supplier, or booking behavior;
 - no reference to the private operator workbench; and
 - no claim of a supplier integration, commercial relationship, ticket sale, or
@@ -21,11 +23,15 @@ graphics, and the approved question/promise/proof messaging hierarchy. The
 versioned logo copy must retain SHA-256
 `294c9b643014d13b3f110bc724fcc7036653ac0d0e293d7564a3293886c02485`.
 
-The only call to action opens the visitor's own email client. The site itself
-does not receive or persist the message. Before deployment, record the chosen
-static host, its technical-log behavior, the custom-domain configuration, and
-any external cost. Do not upload or publish the sibling `human-proof/`
-directory.
+The `Send your journey` calls to action lead to the on-page form. Its `Continue
+in email` action validates and minimises values in page memory, then opens a
+prefilled draft in the visitor's own email client. The website makes no network
+request and stores nothing; ReachBy receives the journey only if the visitor
+chooses to send the email. Once sent, the message is handled as pilot email
+under the existing access and deletion process. Before deployment, record the
+chosen static host, its technical-log behavior, the custom-domain
+configuration, and any external cost. Do not upload or publish the sibling
+`human-proof/` directory.
 
 ## Temporary Gate B deployment record
 
