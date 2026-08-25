@@ -7,6 +7,7 @@
     coordinate: /[-+]?\d{1,3}\.\d{3,}\s*[,/]\s*[-+]?\d{1,3}\.\d{3,}/,
     uri: /(?<![\w.-])[A-Z][A-Z0-9+.-]{0,31}:\S+|(?<![\w.-])\/\/[A-Z0-9.-]+(?::\d{1,5})?(?:[/?#]\S*)?|(?<![\w.-])www\.[^\s]+/i,
     exactAddress: /\b\d{1,5}[A-Z]?\s+(?:[A-ZÀ-ÖØ-öø-ÿẞß][A-ZÀ-ÖØ-öø-ÿẞß.'-]*\s+){0,5}(?:STREET|ST|ROAD|RD|AVENUE|AVE|LANE|LN|DRIVE|DR|WAY|CLOSE|COURT|CT|TERRACE|PLACE|PL|SQUARE|SQ|STRASSE|STRAßE|WEG|ALLEE|PLATZ|GASSE|UFER|DAMM|CHAUSSEE)\b|\b\d{1,5}[A-Z]?\s+(?:[A-ZÀ-ÖØ-öø-ÿẞß][A-ZÀ-ÖØ-öø-ÿẞß.'-]*\s+){0,4}[A-ZÀ-ÖØ-öø-ÿẞß][A-ZÀ-ÖØ-öø-ÿẞß.'-]*(?:STRASSE|STRAßE|WEG|ALLEE|PLATZ|GASSE|UFER|DAMM|CHAUSSEE)\b|\b(?:[A-ZÀ-ÖØ-öø-ÿẞß][A-ZÀ-ÖØ-öø-ÿẞß.'-]*\s+){0,5}(?:STREET|ROAD|AVENUE|LANE|DRIVE|CLOSE|COURT|TERRACE|PLACE|SQUARE)\s+\d{1,5}[A-Z]?\b|\b[A-ZÀ-ÖØ-öø-ÿẞß][A-ZÀ-ÖØ-öø-ÿẞß.'-]*(?:STRASSE|STRAßE|WEG|ALLEE|PLATZ|GASSE|UFER|DAMM|CHAUSSEE)\s+\d{1,5}[A-Z]?\b/i,
+    exactAddressAbbreviated: /\b(?:[A-ZÀ-ÖØ-öø-ÿẞß][A-ZÀ-ÖØ-öø-ÿẞß.'-]*\s+){0,5}(?:STREET|ST|ROAD|RD|AVENUE|AVE|LANE|LN|DRIVE|DR|CLOSE|COURT|CT|TERRACE|PLACE|PL|SQUARE|SQ)\.?\s*[,#-]?\s*\d{1,5}[A-Z]?\b|\b[A-ZÀ-ÖØ-öø-ÿẞß][A-ZÀ-ÖØ-öø-ÿẞß.'-]*(?:STRASSE|STRAßE|STR\.?|WEG|ALLEE|PLATZ|GASSE|UFER|DAMM|CHAUSSEE)\s*[,#-]?\s*\d{1,5}[A-Z]?\b|\b\d{1,5}[A-Z]?\s+[A-ZÀ-ÖØ-öø-ÿẞß][A-ZÀ-ÖØ-öø-ÿẞß.'-]*STR\.?(?=\s|$|[,;])/i,
   });
   const PHONE_CANDIDATE = /(?<![\w-])\+?\d[\d ()./-]{7,}\d(?![\w-])/g;
   const ISO_DATE_OR_TIME = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:\d{2})?)?$/;
