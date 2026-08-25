@@ -3,8 +3,9 @@
 
   const form = document.getElementById("journey-request-form");
   const status = document.getElementById("journey-form-status");
+  const requestPolicy = globalThis.ReachByJourneyRequestPolicy;
 
-  if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) {
+  if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement) || !requestPolicy) {
     return;
   }
 
@@ -64,9 +65,28 @@
     status.textContent = message;
   };
 
+  const markPrivateDetail = (control, problem, fieldLabel) => {
+    if (problem === null || control === null) {
+      return false;
+    }
+    control.setCustomValidity(
+      `${fieldLabel} contains ${problem}. Remove it and email private detail separately only if the operator requests it.`,
+    );
+    control.reportValidity();
+    control.focus();
+    showPreparationError("Please remove private or exact-location detail before preparing the email.");
+    return true;
+  };
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     status.textContent = "";
+    for (const name of ["origin", "destination", "notes"]) {
+      const control = readControl(name);
+      if (control) {
+        control.setCustomValidity("");
+      }
+    }
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
@@ -98,6 +118,17 @@
       !(acknowledgment instanceof HTMLInputElement)
     ) {
       showPreparationError("Please check the journey details and try again.");
+      return;
+    }
+
+    const originControl = readControl("origin");
+    const destinationControl = readControl("destination");
+    const notesControl = readControl("notes");
+    if (
+      markPrivateDetail(originControl, requestPolicy.locationProblem(origin), "Leaving from") ||
+      markPrivateDetail(destinationControl, requestPolicy.locationProblem(destination), "Need to reach") ||
+      markPrivateDetail(notesControl, requestPolicy.notesProblem(notes), "Notes")
+    ) {
       return;
     }
 
