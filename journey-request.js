@@ -81,7 +81,7 @@
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     status.textContent = "";
-    for (const name of ["origin", "destination", "notes"]) {
+    for (const name of ["origin", "destination", "departureWindow", "notes"]) {
       const control = readControl(name);
       if (control) {
         control.setCustomValidity("");
@@ -123,10 +123,12 @@
 
     const originControl = readControl("origin");
     const destinationControl = readControl("destination");
+    const departureWindowControl = readControl("departureWindow");
     const notesControl = readControl("notes");
     if (
       markPrivateDetail(originControl, requestPolicy.locationProblem(origin), "Leaving from") ||
       markPrivateDetail(destinationControl, requestPolicy.locationProblem(destination), "Need to reach") ||
+      markPrivateDetail(departureWindowControl, requestPolicy.notesProblem(departureWindow), "When could you leave?") ||
       markPrivateDetail(notesControl, requestPolicy.notesProblem(notes), "Notes")
     ) {
       return;
