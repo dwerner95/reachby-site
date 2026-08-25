@@ -21,6 +21,7 @@
     "Lowest likely total",
     "Shortest complete journey",
     "Fewest mode handovers",
+    "Lower connection risk",
   ]);
   const allControlCharacters = /[\u0000-\u001f\u007f]/;
   const disallowedNotesCharacters = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/;
